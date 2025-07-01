@@ -3,8 +3,17 @@ import { Fragment } from 'react';
 
 function ListGroup() {
     // this is a practice of render lists
-    const items = ['An item', 'A second item', 'A third item', 'A fourth item', 'And a fifth one'];
-
+    let items = ['An item', 'A second item', 'A third item', 'A fourth item', 'And a fifth one'];
+    // items = []; // uncomment this line to test conditional rendering
+    // conditional rendering
+    if (items.length === 0) {
+        return (
+            <Fragment>
+                <h1>example of conditional rendering</h1>
+                <p>No items found</p>
+            </Fragment>
+        );
+    }
 
     // in jsx, we can only return either HTML elements or components
     return (
