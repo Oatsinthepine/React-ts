@@ -6,6 +6,8 @@ import {useState} from "react";
 interface ListGroupProps {
     items: string[];
     heading: string;
+    // here we add a new function inside the interface to notify the parent component when an item is clicked
+    onSelectItem?: (item: string) => void; // optional function to handle item selection
 }
 
 
@@ -22,6 +24,10 @@ function ListGroup(props: ListGroupProps) {
     const handleClick = (event: MouseEvent) => {
         console.log(event);
         setSelectedIndex(props.items.indexOf(event.currentTarget.textContent || ''));
+        // if the onSelectItem function is provided, we call it with the clicked item
+        if (props.onSelectItem) {
+            props.onSelectItem(event.currentTarget.textContent || '');
+        }
     }
 
 

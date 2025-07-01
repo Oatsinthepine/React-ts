@@ -41,7 +41,14 @@ function App() {
     // moved the items array from ListGroup.tsx to the App component
     const items = ['An item', 'A second item', 'A third item', 'A fourth item', 'And a fifth one'];
     // return <div><Message name={'Jacky'}/></div>
-    return <div><ListGroup items={items} heading="Items for practice"/></div>
+
+    const handleSelectItem = (item: string) => {
+        console.log(item);
+    }
+
+    return <div>
+        <ListGroup items={items} heading="Items for practice" onSelectItem={handleSelectItem} />
+    </div>
 }
 
 export default App; // always export to ensure component is available for import in other files
