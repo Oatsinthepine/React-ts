@@ -1,14 +1,24 @@
 // remember in React, a component cannot return more than one element, to deal with this, we can use a fragment or a parent element like a div
 import { Fragment } from 'react';
 import type {MouseEvent} from "react";
+import {useState} from "react";
 
 function ListGroup() {
     // this is a practice of render lists
     let items = ['An item', 'A second item', 'A third item', 'A fourth item', 'And a fifth one'];
+    // let selectedIndex = 0;
+
+    // useState is a hook that allows us to add state to a functional component
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    // selectedIndex is the current state value, and setSelectedIndex is a function that allows us to update the state
+    //console.log(selectedIndex, setSelectedIndex);
+
+
 
     // this is a practice of event handling
     const handleClick = (event: MouseEvent) => {
-        console.log(event)
+        console.log(event);
+        setSelectedIndex(items.indexOf(event.currentTarget.textContent || ''));
     }
 
 
@@ -35,13 +45,12 @@ function ListGroup() {
                 // return (<li className="list-group-item"  key={item} onClick={() => {return console.log(`Clicked ${item}`)}}>{item}</li>)
                 // this is another way to write the same code, by setting the event handler separately
                 return (
-                    <li className="list-group-item"
+                    <li className={selectedIndex === items.indexOf(item) ? 'list-group-item active' : 'list-group-item'}
                         key = {item}
                         onClick={handleClick}>
                         {item}
                     </li>
                 )
-
             })}
         </ul>
         </Fragment>
