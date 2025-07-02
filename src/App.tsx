@@ -36,19 +36,29 @@
 
 //import Message from "./Message.tsx";
 import ListGroup from "./components/ListGroup.tsx";
+import Alert from "./components/Alert.tsx";
 
 function App() {
     // moved the items array from ListGroup.tsx to the App component
     const items = ['An item', 'A second item', 'A third item', 'A fourth item', 'And a fifth one'];
-    // return <div><Message name={'Jacky'}/></div>
 
     const handleSelectItem = (item: string) => {
         console.log(item);
     }
 
-    return <div>
+    // create a component that accepts children as props
+    return (<div>
         <ListGroup items={items} heading="Items for practice" onSelectItem={handleSelectItem} />
-    </div>
+        {/*To make the Alert component dynamic, we need to pass the text as prop to Alert*/}
+        <Alert children="Passed text"/>
+        <div>
+            <Alert>
+                {/*Because in this way we can customise the html block wrapped within the component with more flexibility*/}
+                <strong>Alert!</strong> <span>This is a dynamic alert component.</span>
+            </Alert>
+        </div>
+    </div>)
 }
 
 export default App; // always export to ensure component is available for import in other files
+
