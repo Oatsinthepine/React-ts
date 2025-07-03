@@ -37,6 +37,9 @@
 //import Message from "./Message.tsx";
 import ListGroup from "./components/ListGroup.tsx";
 import Alert from "./components/Alert.tsx";
+import Button from "./components/Button.tsx"
+import {useState} from "react";
+
 
 function App() {
     // moved the items array from ListGroup.tsx to the App component
@@ -46,19 +49,42 @@ function App() {
         console.log(item);
     }
 
+    // here is the useState hook to manage the state of the new alert, as we want to create a new alert dynamically when the button is clicked
+    const [newAlert, setNewAlert] = useState(false)
+
     // create a component that accepts children as props
-    return (<div>
-        <ListGroup items={items} heading="Items for practice" onSelectItem={handleSelectItem} />
-        {/*To make the Alert component dynamic, we need to pass the text as prop to Alert*/}
-        <Alert children="Passed text"/>
+    return (
         <div>
-            <Alert>
-                {/*Because in this way we can customise the html block wrapped within the component with more flexibility*/}
-                <strong>Alert!</strong> <span>This is a dynamic alert component.</span>
-            </Alert>
+            <ListGroup items={items} heading="Items for practice" onSelectItem={handleSelectItem} />
+            <Alert children="Passed text"/>
+            <div>
+                <Alert>
+                    <strong>Alert!</strong> <span>This is a dynamic alert component.</span>
+                </Alert>
+            </div>
+
+
+            <div>
+                <Button action={() => setNewAlert(true)}>
+                    Click me
+                </Button>
+                {newAlert && (
+                    <Alert>
+                        <strong>New Alert Created!</strong>
+                        <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"
+                            onClick={() => setNewAlert(false)}
+                        ></button>
+                    </Alert>
+                )}
+            </div>
         </div>
-    </div>)
-}
+    ); // <-- closing parenthesis for return
+} // <-- closing brace for function
+
 
 export default App; // always export to ensure component is available for import in other files
 

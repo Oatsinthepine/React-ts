@@ -67,3 +67,6 @@ export default tseslint.config([
   },
 ])
 ```
+
+# Exercise:
+1: Create a bootstrap button component.
