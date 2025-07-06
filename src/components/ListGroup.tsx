@@ -11,7 +11,6 @@ interface ListGroupProps {
 }
 
 
-
 function ListGroup(props: ListGroupProps) {
 
     // useState is a hook that allows us to add state to a functional component
