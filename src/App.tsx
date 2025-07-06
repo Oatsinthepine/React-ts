@@ -39,7 +39,7 @@ import ListGroup from "./components/ListGroup.tsx";
 import Alert from "./components/Alert.tsx";
 import Button from "./components/Button.tsx"
 import {useState} from "react";
-
+import Hello from "./Hello.tsx";
 
 function App() {
     // moved the items array from ListGroup.tsx to the App component
@@ -80,6 +80,9 @@ function App() {
                         ></button>
                     </Alert>
                 )}
+            </div>
+            <div>
+                <Hello/>
             </div>
         </div>
     ); // <-- closing parenthesis for return
